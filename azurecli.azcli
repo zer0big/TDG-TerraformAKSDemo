@@ -1,0 +1,18 @@
+# Define variables
+AKS_Name="tdgcms2023zerobigaksdemo"
+ACR_Name="tdgcms2023zerobigacrdemo"
+RG_Name="RG-TDG-CMS-2023-AKSDemo"
+
+# Get AKS credentials
+az aks get-credentials -g $RG_Name -n $AKS_Name
+
+# Get Node Info
+kubectl get node
+
+# Docker tag and Push to ACR
+docker tag appmod-contapp tdgcms2023zerobigacrdemo.azurecr.io/appmod-contapp:latest
+az acr login -n tdgcms2023zerobigacrdemo
+docker push tdgcms2023zerobigacrdemo.azurecr.io/appmod-contapp:latest
+
+# Deploy and Expose Application
+kubectl apply -f contapp-deploy-svc.yaml
