@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: zero-aks-demo
-          image: tdgzeroacrdemo.azurecr.io/appmod-demo4tdccms:latest
+          image: tdgzeroacrdemo.azurecr.io/appmod-demo4tdgcms:latest
           ports:
             - containerPort: 8080
 ---
